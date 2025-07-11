@@ -8,7 +8,7 @@ def load_model():
     model_path = os.path.join(base_dir, "model.pkl")
     columns_path = os.path.join(base_dir, "model_columns.pkl")
 
-    # Download model
+    # Download model file
     if not os.path.exists(model_path):
         gdown.download(
             "https://drive.google.com/uc?id=1zpa4zHZOm-Hk3zkUHKEGy-oUrmbX1nq5",
@@ -16,7 +16,7 @@ def load_model():
             quiet=False
         )
 
-    # Download model_columns
+    # Download columns file
     if not os.path.exists(columns_path):
         gdown.download(
             "https://drive.google.com/uc?id=144QNun-eO1Tu0ZgE2POnN4rCe_c5nWxJ",
@@ -25,10 +25,10 @@ def load_model():
         )
 
     # Load both
-    with open(model_path, "rb") as mf:
-        model = pickle.load(mf)
+    with open(model_path, "rb") as f:
+        model = pickle.load(f)
 
-    with open(columns_path, "rb") as cf:
-        model_columns = pickle.load(cf)
+    with open(columns_path, "rb") as f:
+        model_columns = pickle.load(f)
 
     return model, model_columns
